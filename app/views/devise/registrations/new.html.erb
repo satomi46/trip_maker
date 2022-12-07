@@ -8,9 +8,11 @@
     </h2>
   </div>
 
-  <%#= render 'shared/error_messages', model: f.object %>
-
   <div class="form-group">
+    <div class="error_messages">
+      <%= render 'shared/error_messages', model: f.object %>
+    </div>
+
     <div class='form-text-wrap'>
       <label class="form-text" for="nickname">ニックネーム</label>
       <span class="indispensable">必須</span>

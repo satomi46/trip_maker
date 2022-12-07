@@ -13,9 +13,12 @@
           </div>
         </div>
         <div class="message">
-          <%# <div class="message-text"> %>
-            <p>新しい旅の計画を立てませんか？</p>
-          <%# </div> %>
+          <div class="message-text">
+          <% if user_signed_in? %>
+              <%= link_to "#{current_user.nickname}さん、", "#" %>
+          <% end %>
+            新しい旅の計画を立てませんか？
+          </div>
           <button type="button" class="btn btn-primary">立てる！</button>
           <%# <p>かわいい猫たちのフォトギャラリーをご覧ください。</p> %>
         </div>

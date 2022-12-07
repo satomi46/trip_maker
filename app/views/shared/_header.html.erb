@@ -3,19 +3,22 @@
       <div class="left-contents">
         <ion-icon name="airplane"></ion-icon>
         <%= link_to "たびなび", "/", class:"logo" %>
-        <a class="new-trip-button" href="#">新規作成</a>
+        <%= link_to "新規作成", "#", class:"btn btn-outline-primary" %>
       </div>
       <div class="right-contents">
           <%# TODO ログアウト状態でこちらを表示 %>
           <div class="btn-group" role="group" aria-label="Basic outlined example">
-            <button type="button" class="btn btn-outline-primary">新規登録</button>
-            <button type="button" class="btn btn-outline-primary">ログイン</button>
+            <%= link_to "新規登録", new_user_registration_path, class:"btn btn-outline-primary" %>
+            <%= link_to "ログイン", new_user_session_path, class:"btn btn-outline-primary" %>
+
+            <%# <button type="button" class="btn btn-outline-primary">新規登録</button>
+            <button type="button" class="btn btn-outline-primary">ログイン</button> %>
           </div>
           <%# ログイン状態でこちらを表示 %>
-          <%# <div class="btn-group" role="group" aria-label="Basic outlined example">
-            <button type="button" class="btn btn-outline-primary">マイページ</button>
-            <button type="button" class="btn btn-outline-primary">ログアウト</button>
-          </div> %>
+          <%# <div class="btn-group" role="group" aria-label="Basic outlined example"> %>
+            <%#= link_to "マイページ", "#", class:"btn btn-outline-primary" %>
+            <%#= link_to "ログアウト", "destroy_user_session_path", class:"btn btn-outline-primary" %>
+          <%# </div> %>
       </div>
     </div>
 </header>

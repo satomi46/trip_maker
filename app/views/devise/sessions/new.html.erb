@@ -26,7 +26,8 @@
     <%= f.password_field :password, class:"input-default", id:"password", placeholder:"" %>
   </div>
   <div class='login-btn'>
-    <%= f.submit "ログイン" ,class:"login-red-btn" %>
+    <%= f.submit "ログイン" ,class:"btn btn-outline-primary login-go-btn" %>
+    <%= link_to 'もどる', "/", class:"btn btn-outline-secondary back-btn" %>
   </div>
 </div>
 <% end %>

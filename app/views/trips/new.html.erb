@@ -1,0 +1,79 @@
+<%= render "shared/header" %>
+
+<%= form_with model: @trip, class: 'trip-new-main', local: true do |f| %>
+<div class="trip-form-wrap">
+  <div class="trip-form-header">
+    <h2 class="form-header-title">旅行の情報を入力</h2>
+    <h5>（あとから変更可能です）</h5>
+  </div>
+
+    <%# 商品画像 %>
+    <%#= render 'shared/error_messages', model: f.object %>
+
+    <div class="img-upload">
+      <div class="weight-bold-text">
+        イメージ画像
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%#= f.file_field :image, id:"item-image" %>
+      </div>
+    </div>
+    <%# /商品画像 %>
+
+    <%# 商品名と商品説明 %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text" for="trip-title">旅行タイトル</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :title, class:"input-default", id:"trip-title", placeholder:"(例) 京都 in 2022 summer" %>
+    </div>
+
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text" for="start-date">出発日</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.date_field :start_date, class:"input-default", id:"start-date" %>
+    </div>
+
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text" for="end-date">帰着日</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.date_field :end_date, class:"input-default", id:"end-date" %>
+    </div>
+    <%# /商品名と商品説明 %>
+
+    <%# 商品の詳細 %>
+    <div class="form-group">
+      <div class="form-text-wrap">同伴者の有無</div>
+        <label class="form-text" for="end-date">同伴者にチェックをつけてください</label>
+        <%# 同伴者の設定 %>
+        <div class="user-checks">
+          <%= f.collection_check_boxes(:user_id, User.all, :id, :nickname) do |b| %>
+            <div class="user-check">
+              <%= b.label { b.check_box + " " + b.text + "さん" } %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <%# /商品の詳細 %>
+      <%# 下部ボタン %>
+      <div class="register-btn">
+        <%= f.submit "新規作成",class:"btn btn-outline-primary register-go-btn" %>
+        <%= link_to 'もどる', "/", class:"btn btn-outline-secondary back-btn" %>
+      </div>
+      <%# /下部ボタン %>
+    </div>
+  </div>
+</div>
+
+<% end %>
+
+<%= render "shared/footer" %>

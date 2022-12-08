@@ -15,7 +15,7 @@
         <div class="message">
           <div class="message-text">
           <% if user_signed_in? %>
-              <%= link_to "#{current_user.nickname}さん、", "#" %>
+              <%= link_to "#{current_user.nickname}さん、", user_path(current_user.id) %>
           <% end %>
             新しい旅の計画を立てませんか？
           </div>

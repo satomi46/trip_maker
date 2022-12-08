@@ -9,7 +9,7 @@
         <% if user_signed_in? %>
           <%# TODO ログアウト状態でこちらを表示 %>
           <div class="btn-group" role="group" aria-label="Basic outlined example">
-            <%= link_to "マイページ", "#", class:"btn btn-outline-primary" %>
+            <%= link_to "マイページ", user_path(current_user.id), class:"btn btn-outline-primary" %>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-outline-primary" %>
           </div>
         <% else %>

@@ -6,9 +6,9 @@ class Trip < ApplicationRecord
   validate  :start_end_check
 
   def start_end_check
-    if self.start_date != nil && self.end_date != nil 
-      errors.add(:end_date, 'must be same or later than Start date') unless self.start_date <= self.end_date 
-    end
+    return if start_date.nil? || end_date.nil? || start_date <= end_date
+
+    errors.add(:end_date, 'must be same or later than Start date')
   end
 
   has_many :trip_users

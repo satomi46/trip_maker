@@ -1,6 +1,7 @@
 class TripsController < ApplicationController
-  before_action :authenticate_user!, only: :new
+  before_action :authenticate_user!, only: [:new, :edit]
   before_action :move_to_index, only: :new
+  before_action :move_to_index_unless_own_page, only: :edit
 
   def index
   end
@@ -18,6 +19,25 @@ class TripsController < ApplicationController
     end
   end
 
+  def edit
+    @trip = Trip.find(params[:id])
+  end
+  
+  def update
+    @trip = Trip.find(params[:id])
+    if @trip.update(trip_params)
+      redirect_to user_path(current_user.id)
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    trip = Trip.find(params[:id])
+    trip.destroy
+    redirect_to user_path(current_user.id)
+  end
+
   private
 
   def trip_params
@@ -26,5 +46,9 @@ class TripsController < ApplicationController
 
   def move_to_index
     redirect_to root_path unless user_signed_in?
+  end
+
+  def move_to_index_unless_own_page
+    redirect_to root_path unless user_signed_in? && Trip.find(params[:id]).user_ids.include?(current_user.id)
   end
 end

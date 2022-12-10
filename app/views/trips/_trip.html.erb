@@ -16,8 +16,8 @@
       </div>
     </div>
     <div class="button">
-      <%= link_to "編集", "#", class:"btn btn-outline-success" %>
-      <%= link_to "削除", "#", data: { confirm: '本当に削除してもよろしいですか?' }, class:"btn btn-outline-danger" %>
+      <%= link_to "編集", edit_trip_path(trip.id), class:"btn btn-outline-success" %>
+      <%= link_to '削除', trip_path(trip.id), method: :delete, data: { confirm: '本当に削除してもよろしいですか?' }, class:"btn btn-outline-danger" %>
     </div>
   </div>
 </div>

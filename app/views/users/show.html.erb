@@ -5,18 +5,8 @@
     <div class="container">
       <div class="contents">
         <div class="trips">
-          <p><%= current_user.nickname %>さんの旅行一覧</p>
-          <div><h2>旅行1</h2>
-            <div>旅行1のタイトル</div>
-            <div>旅行1の日付</div>
-            <div>旅行1の同伴者</div>
-            <div>旅行1の同伴者</div>
-          </div>
-            <%= link_to "編集", "#", class:"btn btn-outline-success" %>
-            <%= link_to "削除", "#", data: { confirm: '本当に削除してもよろしいですか?' }, class:"btn btn-outline-danger" %>
-          <div>旅行2</div>
-          <div>旅行3</div>
-          <div>旅行4</div>
+          <p class="trip-title-view"><%= @nickname %>さんの旅行一覧</p>
+          <%= render @trips %>
         </div>
       </div>
     </div>

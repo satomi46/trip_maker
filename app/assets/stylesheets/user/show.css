@@ -1,0 +1,27 @@
+.trip-title-view {
+  padding: 10px 0px;
+  font-size: 24px;
+}
+
+.trip-contents-wrap {
+  display: flex;
+  align-items: center;
+  /* margin-bottom: 15px; */
+  /* border: 1px solid black; */
+}
+
+.trip-contents {
+  width: 50%;
+  font-size: 18px;
+  background-color: white;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.trip-date {
+  /* width: 20%; */
+}
+
+.companion-lists {
+  margin-left: 10px;
+}

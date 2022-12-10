@@ -1,0 +1,23 @@
+
+<div>
+  <h4 class="trip-title"><%= trip.title %></h4>
+  <div class="trip-contents-wrap">
+    <div class="trip-contents">
+      <div class="trip-date">
+        <div>To : <%= trip.start_date %></div>
+        <div>End : <%= trip.end_date %></div>
+      </div>
+      <div class="companion-lists">同伴者 :
+        <% trip.trip_users.each do |trip| %>
+          <% if trip.user_id != current_user.id %>
+            <%= User.where.not(id: current_user.id).where(id: trip.user_id).pluck(:nickname)[0] %> さん
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="button">
+      <%= link_to "編集", edit_trip_path(trip.id), class:"btn btn-outline-success" %>
+      <%= link_to '削除', trip_path(trip.id), method: :delete, data: { confirm: '本当に削除してもよろしいですか?' }, class:"btn btn-outline-danger" %>
+    </div>
+  </div>
+</div>

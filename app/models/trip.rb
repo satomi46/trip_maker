@@ -11,7 +11,7 @@ class Trip < ApplicationRecord
     errors.add(:end_date, 'must be same or later than Start date')
   end
 
-  has_many :trip_users
+  has_many :trip_users, dependent: :destroy
   has_many :users, through: :trip_users
   has_one_attached :image
 end

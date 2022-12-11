@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit]
+  before_action :authenticate_user!, only: [:new, :edit, :show]
   before_action :move_to_index, only: :new
-  before_action :move_to_index_unless_own_page, only: :edit
+  before_action :move_to_index_unless_own_page, only: [:edit, :show]
 
   def index
   end

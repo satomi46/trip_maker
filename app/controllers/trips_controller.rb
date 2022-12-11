@@ -8,6 +8,7 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+    @detail = Detail.new
   end
 
   def new

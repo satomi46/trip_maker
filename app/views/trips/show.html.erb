@@ -1,0 +1,110 @@
+<%= render "shared/header" %>
+<main>
+  <div class="container">
+    <div class="contents">
+
+      <div class="trip-all">
+        <div class="trip-left">
+          <div class="trip-title-group">
+            <div class="trip-title">
+              <%= @trip.title %>
+            </div>
+            <div class="button">
+              <%= link_to "もどる", user_path(current_user.id), class:"btn btn-outline-primary" %>
+            </div>
+          </div>
+          <div class="trip-content">
+            <div class="trip-dates">
+              <div>To : <%= @trip.start_date %></div>
+              <div>End : <%= @trip.end_date %></div>
+              <div>同伴者 :
+                <% @trip.trip_users.each do |trip| %>
+                  <% if trip.user_id != current_user.id %>
+                    <%= User.where.not(id: current_user.id).where(id: trip.user_id).pluck(:nickname)[0] %> さん
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="button">
+            <%= link_to "編集", edit_trip_path(@trip.id), class:"btn btn-outline-success" %>
+            <%= link_to '削除', trip_path(@trip.id), method: :delete, data: { confirm: '本当に削除してもよろしいですか?' }, class:"btn btn-outline-danger" %>
+          </div>
+        </div>
+        <div class="item-img-content">
+          <%= image_tag @trip.image.variant(resize: '300x200'),class:"item-box-img" %>
+        </div>
+      </div>
+
+      <%# 詳細スケジュールの一覧表示 %>
+      <%#= render @details %>
+      <%# 詳細スケジュールの一覧表示 %>
+
+      <div>
+        入力フォーム
+        <%#= form_with model: @trip, class: 'trip-new-main', local: true do |f| %>
+        <div class="new-trip-form-wrap">
+          <div class="new-trip-form-header">
+            <p>詳細スケジュールを作成</p>
+          </div>
+
+          <div class="form-group">
+            <div class='form-text-wrap'>
+              <label class="form-text" for="trip-title">スケジュール名</label>
+              <span class="form-text required">必須</span>
+            </div>
+            <%#= f.text_area :title, class:"input-default", id:"trip-title", placeholder:"(例) 京都 in 2022 summer" %>
+            <%#= f.text_area :title, class:"input-default", id:"trip-title", placeholder:"(例) 京都 in 2022 summer" %>
+          </div>
+
+          <div class="form-group">
+            <div class='form-text-wrap'>
+              <label class="form-text" for="start-date">住所</label>
+            </div>
+            <%#= f.date_field :start_date, class:"input-default", id:"start-date", placeholder:"(例) 東京都大手町1-1-1" %>
+          </div>
+
+          <div class="form-group">
+            <div class='form-text-wrap'>
+              <label class="form-text" for="end-date">日付</label>
+            </div>
+            <%#= f.date_field :end_date, class:"input-default", id:"end-date" %>
+          </div>
+
+          <div class="form-group">
+            <div class='form-text-wrap'>
+              <label class="form-text" for="end-date">時刻</label>
+            </div>
+            <%#= f.date_field :end_date, class:"input-default", id:"end-date", placeholder:"(例) 12:00" %>
+          </div>
+
+          <div class="form-group">
+            <div class='form-text-wrap'>
+              <label class="form-text" for="end-date">時刻備考</label>
+            </div>
+            <%#= f.date_field :end_date, class:"input-default", id:"end-date", placeholder:"(例) 過ぎ" %>
+          </div>
+
+          <div class="form-group">
+            <div class='form-text-wrap'>
+              <label class="form-text" for="end-date">重要度</label>
+            </div>
+            <%#= f.date_field :end_date, class:"input-default", id:"end-date" %>
+          </div>
+
+          <%# 下部ボタン %>
+          <div class="register-btn">
+            <%#= f.submit "新規作成",class:"btn btn-outline-primary register-go-btn" %>
+            <%= link_to 'もどる', "/", class:"btn btn-outline-secondary back-btn" %>
+          </div>
+          <%# /下部ボタン %>
+        </div>
+
+        <%# end %>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<%= render "shared/footer" %>

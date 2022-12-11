@@ -1,6 +1,13 @@
 
 <div>
-  <h4 class="trip-title"><%= trip.title %></h4>
+  <div class="trip-title-group">
+    <div class="trip-title">
+      <%= trip.title %>
+    </div>
+    <div class="button">
+      <%= link_to "詳細ページ", trip_path(trip.id), class:"btn btn-outline-primary" %>
+    </div>
+  </div>
   <div class="trip-contents-wrap">
     <div class="trip-contents">
       <div class="trip-date">

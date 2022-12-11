@@ -3,11 +3,25 @@
   font-size: 24px;
 }
 
+.trip-title-group {
+  height: 7vh;
+  display: flex;
+  align-items: center;
+}
+
+.trip-title {
+  font-size: 24px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  margin-right: 20px;
+}
+
 .trip-contents-wrap {
   display: flex;
   align-items: center;
   /* margin-bottom: 15px; */
-  /* border: 1px solid black; */
+  border: 1px solid black;
 }
 
 .trip-contents {
@@ -19,6 +33,7 @@
 }
 
 .trip-date {
+  margin-left: 5px;
   /* width: 20%; */
 }
 

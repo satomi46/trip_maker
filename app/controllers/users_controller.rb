@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def show
     user = User.find(params[:id])
     @nickname = user.nickname
-    # @trips = user.trips
+    # TODO @trips = user.trips こちらでも可。どちらがいいか検討し、不要な記述削除
     @trips = Trip.where(id: user.trip_ids)
   end
   

@@ -11,6 +11,10 @@
             </div>
             <div class="button">
               <%= link_to "もどる", user_path(current_user.id), class:"btn btn-outline-primary" %>
+              <div class="right-button">
+                <%= link_to "編集", edit_trip_path(@trip.id), class:"btn btn-outline-success" %>
+                <%= link_to '削除', trip_path(@trip.id), method: :delete, data: { confirm: '本当に削除してもよろしいですか?' }, class:"btn btn-outline-danger" %>
+              </div>
             </div>
           </div>
           <div class="trip-content">
@@ -26,34 +30,25 @@
               </div>
             </div>
           </div>
-          <div class="button">
-            <%= link_to "編集", edit_trip_path(@trip.id), class:"btn btn-outline-success" %>
-            <%= link_to '削除', trip_path(@trip.id), method: :delete, data: { confirm: '本当に削除してもよろしいですか?' }, class:"btn btn-outline-danger" %>
-          </div>
         </div>
         <div class="item-img-content">
           <%= image_tag @trip.image.variant(resize: '300x200'),class:"item-box-img" %>
         </div>
       </div>
 
-      <%# TODO 詳細スケジュールの一覧表示 %>
-      <%#= render @details %>
-      <%# 詳細スケジュールの一覧表示 %>
-
       <%# 詳細スケジュールの入力欄 %>
-      <div>
-        入力フォーム
+      <div class="detail-input">
         <%= form_with model: [@trip, @detail], class: 'trip-new-main', local: true do |f| %>
         <div class="new-trip-form-wrap">
           <div class="new-trip-form-header">
             <p>詳細スケジュールを作成</p>
           </div>
 
-          <div class="error_messages">
-            <%= render 'shared/error_messages', model: f.object %>
-          </div>
 
           <div class="form-group">
+            <div class="error_messages">
+              <%= render 'shared/error_messages', model: f.object %>
+            </div>
             <div class='form-text-wrap'>
               <label class="form-text" for="trip-title">スケジュール名</label>
               <span class="form-text required">必須</span>
@@ -103,12 +98,12 @@
               <label class="form-text" for="importance">重要度</label>
               <span class="form-text required">必須</span>
             </div>
-            <%= f.select :importance, [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]], include_blank: "選択して下さい", class:"form-text", id:"importance" %>
+            <%= f.select :importance, [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]], include_blank: "選択して下さい", class:"input-default", id:"importance" %>
           </div>
 
           <%# 下部ボタン %>
-          <div class="register-btn">
-            <%= f.submit "新規作成",class:"btn btn-outline-primary register-go-btn" %>
+          <div class="schedule-make-button">
+            <%= f.submit "スケジュールを追加",class:"btn btn-outline-primary register-go-btn" %>
             <%= link_to 'もどる', "/", class:"btn btn-outline-secondary back-btn" %>
           </div>
           <%# /下部ボタン %>
@@ -117,6 +112,10 @@
         <% end %>
       </div>
       <%# 詳細スケジュールの入力欄 %>
+
+      <%# TODO 詳細スケジュールの一覧表示 %>
+      <%= render @details %>
+      <%# 詳細スケジュールの一覧表示 %>
 
     </div>
   </div>

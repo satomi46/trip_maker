@@ -5,6 +5,7 @@ class DetailsController < ApplicationController
       redirect_to trip_path(params[:trip_id])
     else
       @trip = Trip.find(params[:trip_id])
+      @details = @trip.details
       render 'trips/show'
     end
   end

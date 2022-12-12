@@ -1,0 +1,22 @@
+<div>
+  <div class="trip-title-group">
+    <div class="trip-title">
+      <%= detail.title %>
+    </div>
+  </div>
+  <div class="trip-contents-wrap">
+    <div class="trip-contents">
+      <div class="trip-details">
+        <div>住所 : <%= detail.address %></div>
+        <div>備考 : <%= detail.note %></div>
+        <div>時刻 : <%= detail.time %><%= detail.time_note %></div>
+        <div>URL : <%= detail.url %></div>
+        <div>重要度 : <%= detail.importance %></div>
+      </div>
+    </div>
+    <div class="button">
+      <%#= link_to "編集", edit_detail_path(detail.id), class:"btn btn-outline-success" %>
+      <%#= link_to '削除', detail_path(detail.id), method: :delete, data: { confirm: '本当に削除してもよろしいですか?' }, class:"btn btn-outline-danger" %>
+    </div>
+  </div>
+</div>

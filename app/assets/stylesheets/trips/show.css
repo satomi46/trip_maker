@@ -29,7 +29,8 @@
 .new-trip-form-wrap {
   width: 100%;
   background-color: white;
-  padding-bottom: 70px;
+  border-radius: 10px;
+  padding-bottom: 10px;
 }
 
 .new-trip-form-header {
@@ -41,9 +42,74 @@
 }
 
 .schedule-make-button {
+  width: 30%;
+  margin: 20px auto;
+}
+
+.form-group-detail {
+  display: flex;
+  height: 100px;
+}
+
+.form-detail {
+  margin: 15px 10px 0;
+}
+
+.form-detail-title {
+  width: 20%;
+}
+
+.form-detail-title-note {
+  width: 30%;
+}
+
+.form-detail-address {
   width: 50%;
-  margin: 40px auto;
+}
+
+.form-detail-date {
+  width: 20%;
+}
+
+.form-detail-time {
+  width: 20%;
+}
+
+.form-detail-time-note {
+  width: 45%;
+}
+
+.form-detail-importance {
+  width: 15%;
+}
+
+.form-detail-url {
+  width: 100%;
+}
+
+.schedule-lists {
+  height: 60px;
+  font-size: 20px;
+  margin: 20px 0;
+  background-color: white;
+  border-radius: 10px;
+  line-height: 60px;
+  padding: 5px;
+}
+
+.trip-details-first-raw {
+  display: flex;
+}
+
+.detail-time {
+  margin-left: 15px;
+  font-weight: bold;
+}
+
+.trip-detail-contents-wrap {
+  background-color: white;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  margin-bottom: 15px;
+  border: 1px solid black;
 }

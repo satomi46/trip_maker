@@ -9,7 +9,7 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @detail = Detail.new
-    @details = @trip.details
+    @details = @trip.details.order('time ASC')
   end
 
   def new

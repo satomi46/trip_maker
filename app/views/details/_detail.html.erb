@@ -1,19 +1,32 @@
 <div>
+
   <div class="trip-title-group">
     <div class="trip-title">
-      <%= detail.title %>
+      <ion-icon name="arrow-redo"></ion-icon><%= detail.title %>
+    </div>
+    <div class="right-button">
+      <%= link_to "編集", edit_trip_detail_path(detail.trip_id, detail.id), class:"btn btn-outline-success" %>
+      <%= link_to '削除', trip_detail_path(detail.trip_id, detail.id), method: :delete, data: { confirm: '本当に削除してもよろしいですか?' }, class:"btn btn-outline-danger" %>
     </div>
   </div>
-  <div class="trip-contents-wrap">
-    <div class="trip-contents">
+  <div class="trip-detail-contents-wrap">
+    <div class="trip-content">
       <div class="trip-details">
-        <div><ion-icon name="home"></ion-icon><%= detail.address %></div>
-        <div><ion-icon name="checkbox"></ion-icon><%= detail.note %></div>
-        <% if detail.time != nil %>
-          <div><ion-icon name="alarm"></ion-icon><%= detail.time.strftime('%m-%d %H:%M') %><%= detail.time_note %></div>
-        <% else %>
-          <div><ion-icon name="alarm"></ion-icon><%= detail.time %><%= detail.time_note %></div>
-        <% end %>
+        <div class="trip-details-first-raw">
+          <ion-icon name="checkbox"></ion-icon><%= detail.note %>
+              <div class="detail-time">
+            <% if detail.time != nil %>
+                <ion-icon name="alarm"></ion-icon><%= detail.time.strftime('%m-%d %H:%M') %><%= detail.time_note %>
+              <%# </div> %>
+            <% else %>
+              <%# <div> %>
+                <ion-icon name="alarm"></ion-icon><%= detail.time %><%= detail.time_note %>
+            <% end %>
+              </div>
+        </div>
+        <div>
+          <ion-icon name="home"></ion-icon><%= detail.address %>
+        </div>
         <div>
           <ion-icon name="globe"></ion-icon><%= detail.url %>
           <% if detail.time != nil %>
@@ -23,9 +36,6 @@
         <div><ion-icon name="star"></ion-icon><%= detail.importance %></div>
       </div>
     </div>
-    <div class="button">
-      <%#= link_to "編集", edit_detail_path(detail.id), class:"btn btn-outline-success" %>
-      <%#= link_to '削除', detail_path(detail.id), method: :delete, data: { confirm: '本当に削除してもよろしいですか?' }, class:"btn btn-outline-danger" %>
-    </div>
+
   </div>
 </div>

@@ -49,7 +49,6 @@
 .form-group-detail {
   display: flex;
   height: 100px;
-  /* border-bottom: 1px solid #00f; */
 }
 
 .form-detail {
@@ -57,43 +56,60 @@
 }
 
 .form-detail-title {
-  width: 30%;
+  width: 20%;
 }
 
 .form-detail-title-note {
-  width: 70%;
+  width: 30%;
 }
 
 .form-detail-address {
-  width: 100%;
-}
-
-.form-detail-date {
-  width: 25%;
-}
-
-.form-detail-time {
-  width: 25%;
-}
-
-.form-detail-time-note {
   width: 50%;
 }
 
-.form-detail-url {
-  width: 70%;
+.form-detail-date {
+  width: 20%;
+}
+
+.form-detail-time {
+  width: 20%;
+}
+
+.form-detail-time-note {
+  width: 45%;
 }
 
 .form-detail-importance {
-  width: 30%;
+  width: 15%;
+}
+
+.form-detail-url {
+  width: 100%;
 }
 
 .schedule-lists {
   height: 60px;
   font-size: 20px;
-  margin-top: 20px;
+  margin: 20px 0;
   background-color: white;
   border-radius: 10px;
   line-height: 60px;
   padding: 5px;
+}
+
+.trip-details-first-raw {
+  display: flex;
+}
+
+.detail-time {
+  margin-left: 15px;
+  font-weight: bold;
+}
+
+.trip-detail-contents-wrap {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  border: 1px solid black;
 }

@@ -49,62 +49,58 @@
             <div class="error_messages">
               <%= render 'shared/error_messages', model: f.object %>
             </div>
-            <div class='form-text-wrap'>
+          </div>
+          <div class='form-group-detail'>
+            <div class='form-detail form-detail-title'>
               <label class="form-text" for="trip-title">スケジュール名</label>
               <span class="form-text required">必須</span>
+              <%= f.text_area :title, class:"input-default", id:"trip-title", placeholder:"(例) 東京タワー" %>
             </div>
-            <%= f.text_area :title, class:"input-default", id:"trip-title", placeholder:"(例) 東京タワー" %>
-            <label class="form-text" for="trip-title-note">備考</label>
-            <%= f.text_area :note, class:"input-default", id:"trip-title-note", placeholder:"お土産購入" %>
+            <div class='form-detail form-detail-title-note'>
+              <label class="form-text" for="trip-title-note">備考</label>
+              <%= f.text_area :note, class:"input-default", id:"trip-title-note", placeholder:"お土産購入" %>
+            </div>
           </div>
 
-          <div class="form-group">
-            <div class='form-text-wrap'>
+          <div class="form-group-detail">
+            <div class='form-detail form-detail-address'>
               <label class="form-text" for="address">住所</label>
+              <%= f.text_area :address, class:"input-default", id:"address", placeholder:"(例) 東京都港区芝公園4-2-8" %>
             </div>
-            <%= f.text_area :address, class:"input-default", id:"address", placeholder:"(例) 東京都港区芝公園4-2-8" %>
           </div>
 
-          <div class="form-group">
-            <div class='form-text-wrap'>
+          <div class="form-group-detail">
+            <div class='form-detail form-detail-date'>
               <label class="form-text" for="date">日付</label>
+              <%= f.date_field :time, class:"input-default", id:"date" %>
             </div>
-            <%= f.date_field :time, class:"input-default", id:"date" %>
-          </div>
-
-          <div class="form-group">
-            <div class='form-text-wrap'>
+            <div class='form-detail form-detail-time'>
               <label class="form-text" for="time">時刻</label>
+              <%= f.time_field :time, class:"input-default", id:"time", placeholder:"(例) 12:00" %>
             </div>
-            <%= f.time_field :time, class:"input-default", id:"time", placeholder:"(例) 12:00" %>
+            <div class='form-detail form-detail-time-note'>
+              <label class="form-text" for="time-note">時刻備考</label>
+              <%= f.text_field :time_note, class:"input-default", id:"time-note", placeholder:"(例) 過ぎ" %>
+            </div>
           </div>
 
-          <div class="form-group">
-            <div class='form-text-wrap'>
-              <label class="form-text" for="time_note">時刻備考</label>
-            </div>
-            <%= f.text_field :time_note, class:"input-default", id:"time_note", placeholder:"(例) 過ぎ" %>
-          </div>
-
-          <div class="form-group">
-            <div class='form-text-wrap'>
+          <div class="form-group-detail">
+            <div class='form-detail form-detail-url'>
               <label class="form-text" for="url">URL</label>
+              <%= f.text_field :url, class:"input-default", id:"url" %>
             </div>
-            <%= f.text_field :url, class:"input-default", id:"url" %>
-          </div>
-
-          <div class="form-group">
-            <div class='form-text-wrap'>
-              <label class="form-text" for="importance">重要度</label>
-              <span class="form-text required">必須</span>
+            <div class='form-detail form-detail-importance'>
+              <div class='form-importance'>
+                <label class="form-text" for="importance">重要度</label>
+                <span class="form-text required">必須</span>
+              </div>
+                <%= f.select :importance, [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]], include_blank: "選択して下さい", class:"input-default", id:"importance" %>
             </div>
-            <%= f.select :importance, [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]], include_blank: "選択して下さい", class:"input-default", id:"importance" %>
           </div>
 
           <%# 下部ボタン %>
           <div class="schedule-make-button">
             <%= f.submit "スケジュールを追加",class:"btn btn-outline-primary register-go-btn" %>
-            <%= link_to 'もどる', "/", class:"btn btn-outline-secondary back-btn" %>
           </div>
           <%# /下部ボタン %>
         </div>
@@ -114,6 +110,9 @@
       <%# 詳細スケジュールの入力欄 %>
 
       <%# TODO 詳細スケジュールの一覧表示 %>
+      <div class="schedule-lists">
+        <p>詳細スケジュール一覧</p>
+      </div>
       <%= render @details %>
       <%# 詳細スケジュールの一覧表示 %>
 

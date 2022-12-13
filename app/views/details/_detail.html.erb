@@ -14,22 +14,20 @@
       <div class="trip-details">
         <div class="trip-details-first-raw">
           <ion-icon name="checkbox"></ion-icon><%= detail.note %>
-              <div class="detail-time">
+          <div class="detail-time">
             <% if detail.time != nil %>
                 <ion-icon name="alarm"></ion-icon><%= detail.time.strftime('%m-%d %H:%M') %><%= detail.time_note %>
-              <%# </div> %>
-            <% else %>
-              <%# <div> %>
-                <ion-icon name="alarm"></ion-icon><%= detail.time %><%= detail.time_note %>
             <% end %>
-              </div>
+          </div>
         </div>
+        <% if detail.address != "" %>
+          <div>
+            <ion-icon name="home"></ion-icon><%= detail.address %>
+          </div>
+        <% end %>
         <div>
-          <ion-icon name="home"></ion-icon><%= detail.address %>
-        </div>
-        <div>
-          <ion-icon name="globe"></ion-icon><%= detail.url %>
-          <% if detail.time != nil %>
+          <% if detail.url != "" %>
+            <ion-icon name="globe"></ion-icon><%= detail.url %>
             <%= link_to "→", detail.url, target: :_blank, rel: "noopener noreferrer", class:"btn btn-outline-info" %>
           <% end %>
         </div>

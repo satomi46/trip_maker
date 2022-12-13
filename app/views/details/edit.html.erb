@@ -35,13 +35,9 @@
 
 
           <div class="form-group-detail">
-            <div class='form-detail form-detail-date'>
-              <label class="form-text" for="date">日付</label>
-              <%= f.date_field :time, class:"input-default", id:"date" %>
-            </div>
             <div class='form-detail form-detail-time'>
-              <label class="form-text" for="time">時刻</label>
-              <%= f.time_field :time, class:"input-default", id:"time", placeholder:"(例) 12:00" %>
+              <label class="form-text" for="time">日時</label>
+              <%= f.datetime_field :time, class:"input-default", id:"time", placeholder:"(例) 12:00" %>
             </div>
             <div class='form-detail form-detail-time-note'>
               <label class="form-text" for="time-note">時刻備考</label>

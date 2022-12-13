@@ -67,20 +67,16 @@
   width: 50%;
 }
 
-.form-detail-date {
-  width: 20%;
-}
-
-.form-detail-time {
-  width: 20%;
+.form-detail-datetime {
+  width: 40%;
 }
 
 .form-detail-time-note {
-  width: 45%;
+  width: 30%;
 }
 
 .form-detail-importance {
-  width: 15%;
+  width: 30%;
 }
 
 .form-detail-url {

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @trips = Trip.where(id: user.trip_ids)
     @friends = current_user.matchers
     @followers = current_user.followers
-    @users = User.all
+    @users = User.where.not(id: current_user.id).page(params[:page]).per(5)
   end
 
   private

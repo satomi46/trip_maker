@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   resources :trips do
     resources :details, only: [:create, :edit, :update, :destroy]
   end
-  resources :users, only: :show
+  resources :users, only: :show do
+    resources :relationships, only: [:create, :destroy]
+  end
 end

@@ -57,7 +57,7 @@
         <label class="form-text" for="end-date">同伴者にチェックをつけてください</label>
         <%# 同伴者の設定 %>
         <div class="user-checks">
-          <%= f.collection_check_boxes(:user_ids, User.where.not(id: current_user.id), :id, :nickname, include_hidden: false) do |b| %>
+          <%= f.collection_check_boxes(:user_ids, @friends, :id, :nickname, include_hidden: false) do |b| %>
             <div class="user-check">
               <%= b.label { b.check_box + " " + b.text + "さん" } %>
             </div>

@@ -6,6 +6,10 @@
     </div>
     <div class="button">
       <%= link_to "詳細ページ", trip_path(trip.id), class:"btn btn-outline-primary" %>
+      <div class="right-button">
+        <%= link_to "編集", edit_trip_path(trip.id), class:"btn btn-outline-success" %>
+        <%= link_to '削除', trip_path(trip.id), method: :delete, data: { confirm: '本当に削除してもよろしいですか?' }, class:"btn btn-outline-danger" %>
+      </div>
     </div>
   </div>
   <div class="trip-contents-wrap">
@@ -21,10 +25,6 @@
           <% end %>
         <% end %>
       </div>
-    </div>
-    <div class="button">
-      <%= link_to "編集", edit_trip_path(trip.id), class:"btn btn-outline-success" %>
-      <%= link_to '削除', trip_path(trip.id), method: :delete, data: { confirm: '本当に削除してもよろしいですか?' }, class:"btn btn-outline-danger" %>
     </div>
   </div>
 </div>

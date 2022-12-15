@@ -32,7 +32,9 @@ class DetailsController < ApplicationController
   end
 
   private
+
   def detail_params
-    params.require(:detail).permit(:title, :note, :address, :time, :time_note, :importance, :url, :fixed).merge(trip_id: params[:trip_id])
+    params.require(:detail).permit(:title, :note, :address, :time, :time_note, :importance, :url, :fixed)
+          .merge(trip_id: params[:trip_id])
   end
 end

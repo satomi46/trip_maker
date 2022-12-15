@@ -1,13 +1,64 @@
 <%= render "shared/header" %>
 
 <main>
-  <div>
-    <div class="container">
-      <div class="contents">
-        <div class="trips">
-          <p class="trip-title-view"><%= @nickname %>さんの旅行一覧</p>
-          <%= render @trips %>
-        </div>
+  <div class="container">
+    <div class="mypage">
+      <div class="my-trips">
+        <p class="trip-title-view"><%= @nickname %>さんの旅行リスト</p>
+        <%= render @trips %>
+      </div>
+      <div class="my-friends">
+        <p class="trip-title-view"><%= @nickname %>さんのフレンドリスト</p>
+      <div class="friends">
+        フレンド（相互フォロー）
+        <ul>
+          <% @friends.each do |user| %>
+            <li>
+              <div class="each-user">
+                <%= user.nickname %>さん
+                <%= link_to 'フレンド解除', user_relationship_path(user.id), method: :delete, class:"btn btn-outline-danger" %>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="follow-requests">
+        フレンドリクエスト
+        <ul>
+          <% @followers.each do |user| %>
+            <% if user.follow_request?(current_user, user) %>
+              <li>
+                <div class="each-user">
+                  <%= user.nickname %>さん
+                  <%= link_to 'フレンド申請', user_relationships_path(user.id), method: :post, class:"btn btn-outline-success" %>
+                </div>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+      <div class="no-association">
+        ユーザーリスト
+        <ul>
+          <% @users.each do |user| %>
+            <% unless current_user.id == user.id %>
+              <li>
+                <div class="each-user">
+                  <%= user.nickname %>さん
+                  <% if current_user.matchers?(user) %>
+                    <%= link_to 'フレンド解除', user_relationship_path(user.id), method: :delete, class:"btn btn-outline-danger" %>
+                  <% elsif current_user.following?(user) %>
+                    <%= link_to 'リクエスト中', user_relationship_path(user.id), method: :delete, class:"btn btn-outline-danger" %>
+                  <% else %>
+                    <%= link_to 'フレンド申請', user_relationships_path(user.id), method: :post, class:"btn btn-outline-success" %>
+                  <% end %>
+                </div>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+        <%= paginate @users %>
+      </div>
       </div>
     </div>
   </div>

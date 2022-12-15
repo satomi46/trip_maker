@@ -14,6 +14,7 @@ class TripsController < ApplicationController
 
   def new
     @trip = Trip.new
+    @friends = current_user.matchers
   end
 
   def create
@@ -27,8 +28,9 @@ class TripsController < ApplicationController
 
   def edit
     @trip = Trip.find(params[:id])
+    @friends = current_user.matchers
   end
-  
+
   def update
     @trip = Trip.find(params[:id])
     if @trip.update(trip_params)

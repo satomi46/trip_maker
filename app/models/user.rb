@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :trip_users, dependent: :destroy
   has_many :trips, through: :trip_users
 
-  has_many :active_relationships, class_name:  'Relationship', foreign_key: 'follower_id', dependent: :destroy
+  has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
   has_many :followings, through: :active_relationships, source: :followed
 
   has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
   validates_format_of :password, with: PASSWORD_REGEX, message: 'should be half-width only, including both letters and numbers',
-                      on: :create
+                                 on: :create
   # trip_usersテーブルの作成の際にバリデーションをかけてしまうため、on: :createを設定し、ユーザー登録時のみに設定。
 
   # フレンド機能で使用するメソッド
@@ -48,5 +48,4 @@ class User < ApplicationRecord
   def follow_request?(user, other_user)
     !user.matchers?(other_user) && other_user.following?(user)
   end
-
 end

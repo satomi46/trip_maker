@@ -4,9 +4,10 @@ const map = () => {
   submit.addEventListener("click", (e) => {
     e.preventDefault();
 
+    const apiKey = process.env.GOOGLE_MAPS_API_KEY
     const address = document.getElementById("address").value; // フォームに入力された住所を取得
     const xmlHttpAddress = new XMLHttpRequest();
-    const url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=#TODO API-KEY"
+    const url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + apiKey
     xmlHttpAddress.open("GET", url, false);
     xmlHttpAddress.send(); // APIへ住所を投げる
 

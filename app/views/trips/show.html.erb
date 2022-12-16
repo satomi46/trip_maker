@@ -36,6 +36,15 @@
         </div>
       </div>
 
+
+      <%# TODO 詳細スケジュールの一覧表示 %>
+      <div class="schedule-lists">
+        <p>詳細スケジュール一覧</p>
+      </div>
+      <%= render @details %>
+      <%# 詳細スケジュールの一覧表示 %>
+
+
       <%# 詳細スケジュールの入力欄 %>
       <div class="detail-input">
         <%= form_with model: [@trip, @detail_coodinate], url: trip_details_path(@trip.id), class: 'trip-new-main', id: 'detail-form', local: true do |f| %>
@@ -103,12 +112,6 @@
       </div>
       <%# 詳細スケジュールの入力欄 %>
 
-      <%# TODO 詳細スケジュールの一覧表示 %>
-      <div class="schedule-lists">
-        <p>詳細スケジュール一覧</p>
-      </div>
-      <%= render @details %>
-      <%# 詳細スケジュールの一覧表示 %>
 
     </div>
   </div>

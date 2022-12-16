@@ -38,7 +38,7 @@
 
       <%# 詳細スケジュールの入力欄 %>
       <div class="detail-input">
-        <%= form_with model: [@trip, @detail], class: 'trip-new-main', id: 'detail-form', local: true do |f| %>
+        <%= form_with model: [@trip, @detail_coodinate], url: trip_details_path(@trip.id), class: 'trip-new-main', id: 'detail-form', local: true do |f| %>
         <div class="new-trip-form-wrap">
           <div class="new-trip-form-header">
             <p>詳細スケジュールを作成</p>

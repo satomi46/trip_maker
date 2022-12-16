@@ -8,7 +8,7 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
-    @detail = Detail.new
+    @detail_coodinate = DetailCoodinate.new
     @details = @trip.details.order('time ASC')
   end
 

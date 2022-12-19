@@ -36,9 +36,18 @@
         </div>
       </div>
 
+
+      <%# TODO 詳細スケジュールの一覧表示 %>
+      <div class="schedule-lists">
+        <p>詳細スケジュール一覧</p>
+      </div>
+      <%= render @details %>
+      <%# 詳細スケジュールの一覧表示 %>
+
+
       <%# 詳細スケジュールの入力欄 %>
       <div class="detail-input">
-        <%= form_with model: [@trip, @detail], class: 'trip-new-main', local: true do |f| %>
+        <%= form_with model: [@trip, @detail_coodinate], url: trip_details_path(@trip.id), class: 'trip-new-main', id: 'detail-form', local: true do |f| %>
         <div class="new-trip-form-wrap">
           <div class="new-trip-form-header">
             <p>詳細スケジュールを作成</p>
@@ -60,7 +69,7 @@
               <label class="form-text" for="trip-title-note">備考</label>
               <%= f.text_area :note, class:"input-default", id:"trip-title-note", placeholder:"お土産購入" %>
             </div>
-            <div class='form-detail form-detail-address'>
+            <div class='form-detail form-detail-address' id='coordinate'>
               <label class="form-text" for="address">住所</label>
               <%= f.text_area :address, class:"input-default", id:"address", placeholder:"(例) 東京都港区芝公園4-2-8" %>
             </div>
@@ -94,7 +103,7 @@
 
           <%# 下部ボタン %>
           <div class="schedule-make-button">
-            <%= f.submit "スケジュールを追加",class:"btn btn-outline-primary register-go-btn" %>
+            <%= f.submit "スケジュールを追加",class:"btn btn-outline-primary register-go-btn", id:"address-button" %>
           </div>
           <%# /下部ボタン %>
         </div>
@@ -103,12 +112,6 @@
       </div>
       <%# 詳細スケジュールの入力欄 %>
 
-      <%# TODO 詳細スケジュールの一覧表示 %>
-      <div class="schedule-lists">
-        <p>詳細スケジュール一覧</p>
-      </div>
-      <%= render @details %>
-      <%# 詳細スケジュールの一覧表示 %>
 
     </div>
   </div>

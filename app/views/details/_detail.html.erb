@@ -7,6 +7,7 @@
     <div class="right-button">
       <%= link_to "編集", edit_trip_detail_path(detail.trip_id, detail.id), class:"btn btn-outline-success" %>
       <%= link_to '削除', trip_detail_path(detail.trip_id, detail.id), method: :delete, data: { confirm: '本当に削除してもよろしいですか?' }, class:"btn btn-outline-danger" %>
+      <%= link_to '天気取得', '', class:"btn btn-outline-info weather-load-button", data:detail.address, data2:detail.id, id:"weather-#{detail.id}" %>
     </div>
   </div>
   <div class="trip-detail-contents-wrap">
@@ -34,6 +35,100 @@
         <div><ion-icon name="star"></ion-icon><%= detail.importance %></div>
       </div>
     </div>
+
+    <div class="weather-content">
+      <div class="every-3hours-weather">
+        <div class="hourly-weather">
+          <p class="hourly-time" id="hourly-time-<%= detail.id %>-0"></p>
+          <div class="hourly-content">
+            <p class="hourly-icon" id="hourly-icon-<%= detail.id %>-0"></p>
+            <p class="hourly-temperature" id="hourly-temperature-<%= detail.id %>-0"></p>
+          </div>
+        </div>
+        <div class="hourly-weather">
+          <p class="hourly-time" id="hourly-time-<%= detail.id %>-1"></p>
+          <div class="hourly-content">
+            <p class="hourly-icon" id="hourly-icon-<%= detail.id %>-1"></p>
+            <p class="hourly-temperature" id="hourly-temperature-<%= detail.id %>-1"></p>
+          </div>
+        </div>
+        <div class="hourly-weather">
+          <p class="hourly-time" id="hourly-time-<%= detail.id %>-2"></p>
+          <div class="hourly-content">
+            <p class="hourly-icon" id="hourly-icon-<%= detail.id %>-2"></p>
+            <p class="hourly-temperature" id="hourly-temperature-<%= detail.id %>-2"></p>
+          </div>
+        </div>
+        <div class="hourly-weather">
+          <p class="hourly-time" id="hourly-time-<%= detail.id %>-3"></p>
+          <div class="hourly-content">
+            <p class="hourly-icon" id="hourly-icon-<%= detail.id %>-3"></p>
+            <p class="hourly-temperature" id="hourly-temperature-<%= detail.id %>-3"></p>
+          </div>
+        </div>
+        <div class="hourly-weather">
+          <p class="hourly-time" id="hourly-time-<%= detail.id %>-4"></p>
+          <div class="hourly-content">
+            <p class="hourly-icon" id="hourly-icon-<%= detail.id %>-4"></p>
+            <p class="hourly-temperature" id="hourly-temperature-<%= detail.id %>-4"></p>
+          </div>
+        </div>
+        <div class="hourly-weather">
+          <p class="hourly-time" id="hourly-time-<%= detail.id %>-5"></p>
+          <div class="hourly-content">
+            <p class="hourly-icon" id="hourly-icon-<%= detail.id %>-5"></p>
+            <p class="hourly-temperature" id="hourly-temperature-<%= detail.id %>-5"></p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="three-days-weather">
+        <div class="daily-weather">
+          <p class="day" id="day-<%= detail.id %>-0"></p>
+          <div class="daily-content">
+            <p class="daily-icon" id="daily-icon-<%= detail.id %>-0"></p>
+            <div class="daily-temperature">
+                <p class="daily-high-temperature" id="daily-high-temperature-<%= detail.id %>-0"></p>
+                <p class="daily-low-temperature" id="daily-low-temperature-<%= detail.id %>-0"></p>
+            </div>
+            <div class="daily-sun">
+                <p class="daily-sunrise" id="daily-sunrise-<%= detail.id %>-0"></p>
+                <p class="daily-sunset" id="daily-sunset-<%= detail.id %>-0"></p>
+            </div>
+          </div>
+        </div>
+        <div class="daily-weather">
+          <p class="day" id="day-<%= detail.id %>-1"></p>
+          <div class="daily-content">
+            <p class="daily-icon" id="daily-icon-<%= detail.id %>-1"></p>
+            <div class="daily-temperature">
+                <p class="daily-high-temperature" id="daily-high-temperature-<%= detail.id %>-1"></p>
+                <p class="daily-low-temperature" id="daily-low-temperature-<%= detail.id %>-1"></p>
+            </div>
+            <div class="daily-sun">
+                <p class="daily-sunrise" id="daily-sunrise-<%= detail.id %>-1"></p>
+                <p class="daily-sunset" id="daily-sunset-<%= detail.id %>-1"></p>
+            </div>
+          </div>
+        </div>
+        <div class="daily-weather">
+          <p class="day" id="day-<%= detail.id %>-2"></p>
+          <div class="daily-content">
+            <p class="daily-icon" id="daily-icon-<%= detail.id %>-2"></p>
+            <div class="daily-temperature">
+                <p class="daily-high-temperature" id="daily-high-temperature-<%= detail.id %>-2"></p>
+                <p class="daily-low-temperature" id="daily-low-temperature-<%= detail.id %>-2"></p>
+            </div>
+            <div class="daily-sun">
+                <p class="daily-sunrise" id="daily-sunrise-<%= detail.id %>-2"></p>
+                <p class="daily-sunset" id="daily-sunset-<%= detail.id %>-2"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
   </div>
 </div>

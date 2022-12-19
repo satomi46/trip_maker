@@ -1,0 +1,2 @@
+class Coodinate < ApplicationRecord
+end

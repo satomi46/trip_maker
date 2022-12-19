@@ -1,7 +1,8 @@
 class DetailsController < ApplicationController
   def create
-    @detail = Detail.new(detail_params)
-    if @detail.save
+    @detail_coodinate = DetailCoodinate.new(detail_params)
+    if @detail_coodinate.valid?
+      @detail_coodinate.save
       redirect_to trip_path(params[:trip_id])
     else
       @trip = Trip.find(params[:trip_id])
@@ -17,7 +18,10 @@ class DetailsController < ApplicationController
 
   def update
     @detail = Detail.find(params[:id])
-    if @detail.update(detail_params)
+    if @detail.update(detail_params_of_edit)
+      if @detail.address != ""
+        Coodinate.find_or_create_by(address: @detail.address, latitude: params[:lat], longitude: params[:lng])
+      end
       redirect_to trip_path(params[:trip_id])
     else
       @trip = Trip.find(params[:trip_id])
@@ -34,6 +38,11 @@ class DetailsController < ApplicationController
   private
 
   def detail_params
+    params.require(:detail_coodinate).permit(:title, :note, :address, :time, :time_note, :importance, :url, :fixed)
+          .merge(trip_id: params[:trip_id], latitude: params[:lat], longitude: params[:lng])
+  end
+
+  def detail_params_of_edit
     params.require(:detail).permit(:title, :note, :address, :time, :time_note, :importance, :url, :fixed)
           .merge(trip_id: params[:trip_id])
   end

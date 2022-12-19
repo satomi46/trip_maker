@@ -106,27 +106,132 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
-  border: 1px solid black;
 }
 
 .weather-content {
   width: 40%;
-  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
-  font-size: 14px;
 }
 
 .every-3hours-weather {
   height: 50%;
   display: flex;
   justify-content: space-between;
+  font-size: 12px;
   border: 1px solid brown;
 }
 
-.days-weather {
+.hourly-weather {
+  width: 16.5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.hourly-time {
+  height: 15px;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.hourly-content {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  margin-bottom: 0;
+  /* height: 75%; */
+}
+
+.hourly-icon {
+  margin-left: 2px;
+  height: 80%;
+  width: 40%;
+  margin-bottom: 0;
+}
+
+.hourly-temperature {
+  height: 30px;
+  width: 60%;
+  line-height: 30px;
+  text-align: center;
+}
+
+.three-days-weather {
   height: 50%;
   border: 1px solid aqua;
   display: flex;
   justify-content: space-between;
+  font-size: 14px;
+}
+
+.daily-weather {
+  width: 33.3%;
+  display: flex;
+  flex-direction: column;
+}
+
+.day {
+  height: 35%;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.daily-content {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  margin-bottom: 0;
+  height: 65%;
+}
+
+.daily-icon {
+  margin-left: 2px;
+  height: 100%;
+  width: 30%;
+  margin-bottom: 3px;
+}
+
+.daily-temperature {
+  height: 100%;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0;
+  /* border: 1px solid green; */
+}
+
+.daily-high-temperature {
+  height: 50%;
+  /* line-height: 100%; */
+  color: red;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.daily-low-temperature {
+  height: 50%;
+  color: #00c4ff;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.daily-sun {
+  height: 100%;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.daily-sunrise {
+  height: 50%;
+  color: red;
+  margin-bottom: 0;
+}
+
+.daily-sunset {
+  height: 50%;
+  color: #00c4ff;
+  margin-bottom: 0;
 }

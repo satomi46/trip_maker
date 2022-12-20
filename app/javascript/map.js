@@ -7,17 +7,16 @@ const map = () => {
     e.preventDefault();
 
     const address = document.getElementById("address").value; // フォームに入力された住所を取得
-    const xmlHttpAddress = new XMLHttpRequest();
     const url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + apiKey
-    xmlHttpAddress.open("GET", url, false);
-    xmlHttpAddress.send(); // APIへ住所を投げる
 
-    if (xmlHttpAddress.readyState == 4 && xmlHttpAddress.status == 200) { // APIからのレスポンスを確認
-      const result = xmlHttpAddress.responseText;
-      const jsResult = eval("(" + result + ")");
+    fetch(url, { // 入力された住所の座標等を取得
+      method: "GET",
+    })
+    .then(response => response.json())
+    .then(json => {
 
-      const lat = jsResult.results[0].geometry.location.lat; // APIから受け取った緯度
-      const lng = jsResult.results[0].geometry.location.lng; // APIから受け取った経度
+      const lat = json.results[0].geometry.location.lat; // APIから受け取ったjsonから緯度を取り出す
+      const lng = json.results[0].geometry.location.lng; // APIから受け取ったjsonから経度を取り出す
 
       // 非表示でタグに値を埋めこむ（キーはlat/lng、バリューはAPIから受け取った実数）
       const latitude = `<input value=${lat} name='lat' type="hidden"> `;
@@ -26,9 +25,9 @@ const map = () => {
       const coordinate = document.getElementById("coordinate")
       coordinate.insertAdjacentHTML("beforeend", latitude);
       coordinate.insertAdjacentHTML("beforeend", longitude);
-    }
-
-    document.getElementById("detail-form").submit();
+      
+      document.getElementById("detail-form").submit();
+    });
   });
 
 
@@ -65,15 +64,6 @@ const map = () => {
     points[1].lat = arrivalAddressTarget.latitude;
     points[1].lng = arrivalAddressTarget.longitude;
 
-    // const url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + arrivalAddressTarget.address + "&key=" + apiKey
-    // fetch(url, { // 3時間ごとのデータを取得
-    //   method: "GET",
-    // })
-    // .then(response => response.json())
-    // .then(json => {
-    //   console.log(json.results[0].geometry.location)
-    // })
-
 
     const latLng = new google.maps.LatLng(points[0].lat, points[0].lng);
     const map = new google.maps.Map(document.getElementById("route-map-area"), { // 出発地を中心としたマップを表示
@@ -82,18 +72,6 @@ const map = () => {
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
     const latLngBounds = new google.maps.LatLngBounds();
-
-    for( var i=0; i<points.length; i++) { // 地図に2地点のマーカーをそれぞれ立てる
-      var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(points[i].lat, points[i].lng),
-        map: map
-      })
-      latLngBounds.extend(marker.position);
-    }
-
-    map.fitBounds(latLngBounds);
-
-
     const directionService = new google.maps.DirectionsService();
     const poly = new google.maps.Polyline({strokeColor:"#FF5C61", strokeWeight:3}); // ルートの線の情報
     const request = {
@@ -111,6 +89,8 @@ const map = () => {
         });
       }
     });
+
+    map.fitBounds(latLngBounds);
 
   });
 };

@@ -7,27 +7,31 @@ const map = () => {
     e.preventDefault();
 
     const address = document.getElementById("address").value; // フォームに入力された住所を取得
-    const url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + apiKey
+    if (address != "") {
+      const url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + apiKey
 
-    fetch(url, { // 入力された住所の座標等を取得
+      fetch(url, { // 入力された住所の座標等を取得
       method: "GET",
-    })
-    .then(response => response.json())
-    .then(json => {
+      })
+      .then(response => response.json())
+      .then(json => {
 
-      const lat = json.results[0].geometry.location.lat; // APIから受け取ったjsonから緯度を取り出す
-      const lng = json.results[0].geometry.location.lng; // APIから受け取ったjsonから経度を取り出す
+        const lat = json.results[0].geometry.location.lat; // APIから受け取ったjsonから緯度を取り出す
+        const lng = json.results[0].geometry.location.lng; // APIから受け取ったjsonから経度を取り出す
 
-      // 非表示でタグに値を埋めこむ（キーはlat/lng、バリューはAPIから受け取った実数）
-      const latitude = `<input value=${lat} name='lat' type="hidden"> `;
-      const longitude = `<input value=${lng} name='lng' type="hidden"> `;
+        // 非表示でタグに値を埋めこむ（キーはlat/lng、バリューはAPIから受け取った実数）
+        const latitude = `<input value=${lat} name='lat' type="hidden"> `;
+        const longitude = `<input value=${lng} name='lng' type="hidden"> `;
 
-      const coordinate = document.getElementById("coordinate")
-      coordinate.insertAdjacentHTML("beforeend", latitude);
-      coordinate.insertAdjacentHTML("beforeend", longitude);
-      
+        const coordinate = document.getElementById("coordinate")
+        coordinate.insertAdjacentHTML("beforeend", latitude);
+        coordinate.insertAdjacentHTML("beforeend", longitude);
+
+        document.getElementById("detail-form").submit();
+      });
+    } else {
       document.getElementById("detail-form").submit();
-    });
+    }
   });
 
   var points = [{}, {}];

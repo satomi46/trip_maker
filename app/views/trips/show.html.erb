@@ -43,9 +43,9 @@
           <div class="select-route">
             <div class="select-route-btn">
               出発地：
-              <%= collection_select(:title, :id, Detail.where(trip_id: @trip.id).order('time ASC'), :id, :title, prompt: "現在地" ) %><br>
+              <%= collection_select(:title, :id, Detail.where(trip_id: @trip.id).where.not(address: "").order('time ASC'), :id, :title, prompt: "現在地" ) %><br>
               目的地：
-              <%= collection_select(:title, :title, Detail.where(trip_id: @trip.id).order('time ASC'), :id, :title ) %>
+              <%= collection_select(:title, :title, Detail.where(trip_id: @trip.id).where.not(address: "").order('time ASC'), :id, :title ) %>
             </div>
             <%= link_to 'ルート表示', '', class:"btn btn-outline-info get-route", id:"get-route" %>
           </div>

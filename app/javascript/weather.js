@@ -93,11 +93,17 @@ const weather = () => {
             dailyHighTemperatureArea.insertAdjacentText("afterbegin", dailyHighTemperature + "℃")
             const dailyLowTemperatureArea = document.getElementById("daily-low-temperature-" + detailId + "-" + i)
             dailyLowTemperatureArea.insertAdjacentText("afterbegin", dailyLowTemperature + "℃")
-            
+
             const sunrise = new Date(json.daily[i].sunrise * 1000);
-            const sunriseTime = sunrise.getHours() + ":" + sunrise.getMinutes();
+            let sunriseTime = sunrise.getHours() + ":" + sunrise.getMinutes();
+            if (sunrise.getMinutes() < 10) {
+            sunriseTime = sunrise.getHours() + ":0" + sunrise.getMinutes();
+            }
             const sunset = new Date(json.daily[i].sunset * 1000);
-            const sunsetTime = sunset.getHours() + ":" + sunset.getMinutes();
+            let sunsetTime = sunset.getHours() + ":" + sunset.getMinutes();
+            if (sunset.getMinutes() < 10) {
+              sunsetTime = sunset.getHours() + ":0" + sunset.getMinutes();
+            }
             const sunriseTimeArea = document.getElementById("daily-sunrise-" + detailId + "-" + i)
             sunriseTimeArea.insertAdjacentText("afterbegin", "↗︎ " + sunriseTime)
             const sunsetTimeArea = document.getElementById("daily-sunset-" + detailId + "-" + i)

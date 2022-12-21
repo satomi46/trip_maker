@@ -191,7 +191,7 @@
   display: flex;
   justify-content: space-between;
   font-size: 12px;
-  border: 1px solid brown;
+  border: 1px solid orange;
 }
 
 .hourly-weather {
@@ -211,7 +211,6 @@
   justify-content:space-between;
   align-items: center;
   margin-bottom: 0;
-  /* height: 75%; */
 }
 
 .hourly-icon {
@@ -270,12 +269,10 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 0;
-  /* border: 1px solid green; */
 }
 
 .daily-high-temperature {
   height: 50%;
-  /* line-height: 100%; */
   color: red;
   font-weight: bold;
   margin-bottom: 0;

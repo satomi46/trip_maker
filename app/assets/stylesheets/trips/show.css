@@ -21,6 +21,72 @@
   padding: 15px;
 }
 
+
+/* マップ表示部分 */
+
+.map {
+  /* height: 100%; */
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0;
+  padding-bottom: 5px;
+}
+
+.route-map {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0;
+}
+
+.select-route {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.select-route-btn {
+  padding: 15px;
+}
+
+.route-map-area {
+  height: 300px;
+  width: 500px;
+}
+
+.current-map {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0;
+}
+
+.select-option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.select-option-btn {
+  padding: 15px;
+}
+
+.current-map-area {
+  height: 300px;
+  width: 500px;
+}
+
+
+/* 詳細スケジュール入力フォーム */
+
 .detail-input {
   margin-top: 20px;
 }
@@ -82,6 +148,9 @@
   width: 100%;
 }
 
+
+/* 詳細スケジュールの一覧表示 */
+
 .schedule-lists {
   height: 60px;
   font-size: 20px;
@@ -107,6 +176,9 @@
   justify-content: space-between;
   margin-bottom: 15px;
 }
+
+
+/* 天気表示部分 */
 
 .weather-content {
   width: 40%;

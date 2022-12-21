@@ -10,9 +10,11 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @detail_coodinate = DetailCoodinate.new
     @details = @trip.details.order('time ASC')
+    # @detail_titles = Detail.where(trip_id: params[:id]).pluck(:nickname)
     @coords = Coodinate.all
-    @address = Coodinate.pluck(:address)
+    # @address = Coodinate.pluck(:address)
     gon.coords = @coords
+    gon.details = @details
   end
 
   def new

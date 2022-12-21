@@ -49,13 +49,20 @@ main {
 
 .contents {
   position: relative;
-  /* border: 1px solid black; */
+  padding: 40px 20px 0px;
 }
 
 .trip-images {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+}
+
+.trip-image1 {
+  width: 47%;
+}
+.trip-image2 {
+  width: 53%;
 }
 
 .trip-image {
@@ -69,8 +76,8 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 80%;
-  width: 100%;
+  top: 76%;
+  width: 96%;
   height: 20%;
   background-color: white;
   border-radius: 10px;

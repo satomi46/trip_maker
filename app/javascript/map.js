@@ -157,6 +157,119 @@ const map = () => {
   }
 
 
+  // 旅行詳細ページで検索スポットと検索範囲を選択してマップ表示ボタンを押すると選択に応じた周辺マップとスポットを表示
+  const getCurrentMap = document.getElementById("get-map")
+  getCurrentMap.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    var myLocation, spot, distance, currentMap;
+    var markers = new Array();
+
+    drawMap();
+
+    function drawMap() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(onSuccess, onError,
+                                                  {maximumAge: 60*1000,
+                                                  timeout: 5*60*1000,
+                                                  enableHighAccuracy: true});
+      } else
+      alert("Your browser does not support Geolocation API !!!")
+    }
+
+    function onSuccess(position) {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+      myLocation = new google.maps.LatLng(lat, lng);
+
+      var mapOptions = {
+        center: myLocation,
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      currentMap = new google.maps.Map(document.getElementById("current-map-area"), mapOptions);
+
+      getLocations();
+
+      function getLocations() {
+        interest = document.getElementById("map_spot").value;
+        switch(interest) {
+          case "病院":
+            spot = "doctor"
+            break;
+          case "ATM":
+            spot = "atm"
+            break;
+          case "駐車場":
+            spot = "parking"
+            break;
+          case "図書館":
+            spot = "library"
+            break;
+          case "レストラン":
+            spot = "restaurant"
+            break;
+          default:
+            spot = "";
+            break;
+        }
+        distance = parseInt(document.getElementById("map_distance").value.replace(/,/g, ""), 10);
+        if (spot != "") {
+          findPlace();
+        }
+      }
+
+      function findPlace() {
+        const request = {
+          location: myLocation,
+          radius: distance,
+          types: [spot]
+        };
+        const service = new google.maps.places.PlacesService(currentMap);  
+        service.search(request, createMarkers);
+      }
+
+      function createMarkers(response, status) {
+        const latLngBounds = new google.maps.LatLngBounds();
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+          clearMarkers();
+          for(var i=0;i<response.length;i++) {
+            drawMarker(response[i]);
+            latLngBounds.extend(response[i].geometry.location);
+          }
+          currentMap.fitBounds(latLngBounds);
+        } else
+        alert("Sorry, there is some error !!!");
+      }
+
+      function drawMarker(obj) {
+        var marker = new google.maps.Marker({
+          position: obj.geometry.location,
+          map: currentMap
+        });
+        markers.push(marker);
+
+        const infoWindow = new google.maps.InfoWindow({
+          content: '<img src="' + obj.icon + '"/><font style="color:gray">' +
+                    obj.name + '<br />Rating: ' + obj.rating +
+                    '<br />Vicinity: ' + obj.vicinity + '</font>'
+        });
+        google.maps.event.addListener(marker, 'click', function () {
+          infoWindow.open(map, marker);
+        });
+      }
+
+      function clearMarkers() {
+        if (markers) {
+          for(i in markers) {
+            markers[i].setMap(null);
+          }
+          markers = [];
+        }
+      }
+    }
+
+  });
 };
 
 window.addEventListener("load", map);

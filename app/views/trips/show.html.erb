@@ -56,9 +56,9 @@
           <div class="select-option">
             <div class="select-option-btn">
               検索スポット：
-              <%= select(:title, :id, ["病院", "ATM", "駐車場", "図書館", "レストラン"], { include_blank: "---" } ) %><br>
+              <%= select(:map, :spot, ["病院", "ATM", "駐車場", "図書館", "レストラン"], { include_blank: "---" } ) %><br>
               検索範囲 (m) ：
-              <%= select(:title, :id, [500, 1000.to_s(:delimited), 1500.to_s(:delimited), 2000.to_s(:delimited)], { include_blank: "---" } ) %>
+              <%= select(:map, :distance, [500, 1000.to_s(:delimited), 1500.to_s(:delimited), 2000.to_s(:delimited)], { include_blank: "---" } ) %>
             </div>
             <%= link_to 'マップ表示', '', class:"btn btn-outline-info", id:"get-map" %>
           </div>

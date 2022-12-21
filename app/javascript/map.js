@@ -255,8 +255,8 @@ const map = () => {
 
         const infoWindow = new google.maps.InfoWindow({
           content: '<img src="' + obj.icon + '"/><font style="color:gray">' +
-                    obj.name + '<br />Rating: ' + obj.rating +
-                    '<br />Vicinity: ' + obj.vicinity + '</font>'
+                    obj.name + '<br />評価: ' + obj.rating +
+                    '<br />住所: ' + obj.vicinity + '</font>'
         });
         google.maps.event.addListener(marker, 'click', function () {
           infoWindow.open(map, marker);

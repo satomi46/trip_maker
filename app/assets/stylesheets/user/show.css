@@ -56,6 +56,12 @@
   padding: 5px 10px;
 }
 
+.bell-icon {
+  color: #FF8A8A;
+  font-size: 24px;
+  margin-left: -5px;
+}
+
 /*ページネーション自体のデザイン*/
 .pagination {
   font-size: small;

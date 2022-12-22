@@ -7,7 +7,9 @@
     <div class="right-button">
       <%= link_to "編集", edit_trip_detail_path(detail.trip_id, detail.id), class:"btn btn-outline-success" %>
       <%= link_to '削除', trip_detail_path(detail.trip_id, detail.id), method: :delete, data: { confirm: '本当に削除してもよろしいですか?' }, class:"btn btn-outline-danger" %>
-      <%= link_to '天気取得', '', class:"btn btn-outline-info weather-load-button", data:detail.address, data2:detail.id, id:"weather-#{detail.id}" %>
+      <% if detail.address != "" %>
+        <%= link_to '天気取得', '', class:"btn btn-outline-info weather-load-button", data:detail.address, data2:detail.id, id:"weather-#{detail.id}" %>
+      <% end %>
     </div>
   </div>
   <div class="trip-detail-contents-wrap">

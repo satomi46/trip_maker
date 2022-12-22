@@ -3,6 +3,9 @@
   <div class="trip-title-group">
     <div class="trip-title">
       <%= trip.title %>
+      <% if Notice.exists?(user_id: current_user.id, trip_id: trip.id) %>
+        <ion-icon class="bell-icon" name="alert-circle"></ion-icon>
+      <% end %>
     </div>
     <div class="button">
       <%= link_to "詳細ページ", trip_path(trip.id), class:"btn btn-outline-primary" %>

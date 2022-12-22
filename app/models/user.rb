@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :trip_users, dependent: :destroy
   has_many :trips, through: :trip_users
+  has_many :notices, dependent: :destroy
 
   has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
   has_many :followings, through: :active_relationships, source: :followed

@@ -14,5 +14,6 @@ class Trip < ApplicationRecord
   has_many :trip_users, dependent: :destroy
   has_many :users, through: :trip_users
   has_many :details, dependent: :destroy
+  has_many :notices, dependent: :destroy
   has_one_attached :image
 end

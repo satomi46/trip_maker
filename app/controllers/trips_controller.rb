@@ -13,6 +13,10 @@ class TripsController < ApplicationController
     @coords = Coodinate.all
     gon.coords = @coords
     gon.details = @details
+
+    if Notice.exists?(user_id: current_user.id, trip_id: @trip.id)
+      Notice.find_by(user_id: current_user.id, trip_id: @trip.id).destroy
+    end
   end
 
   def new
@@ -23,6 +27,7 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     if @trip.save
+      make_notice
       redirect_to root_path
     else
       render :new
@@ -37,6 +42,7 @@ class TripsController < ApplicationController
   def update
     @trip = Trip.find(params[:id])
     if @trip.update(trip_params)
+      make_notice
       redirect_to user_path(current_user.id)
     else
       render 'edit'
@@ -44,12 +50,19 @@ class TripsController < ApplicationController
   end
 
   def destroy
-    trip = Trip.find(params[:id])
-    trip.destroy
+    @trip = Trip.find(params[:id]).destroy
     redirect_to user_path(current_user.id)
   end
 
   private
+
+  def make_notice
+    @trip.user_ids.each do |user_id|
+      unless user_id == current_user.id
+        Notice.find_or_create_by(user_id: user_id, trip_id: @trip.id)
+      end
+    end
+  end
 
   def trip_params
     params.require(:trip).permit(:image, :title, :start_date, :end_date, user_ids: [])

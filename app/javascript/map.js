@@ -3,6 +3,9 @@ const map = () => {
 
   // 詳細スケジュールで住所を入力したとき、座標を取得しparamsに送信
   const submit = document.getElementById("address-button");
+
+  if (!submit) { return false; } // address-buttonがないページ（旅行詳細以外のページ）では以降の処理を行わない
+
   submit.addEventListener("click", (e) => {
     e.preventDefault();
 

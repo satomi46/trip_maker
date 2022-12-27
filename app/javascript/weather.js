@@ -80,7 +80,7 @@ const weather = () => {
 
             const icon = json.daily[i].weather[0].icon
             const iconImg = document.createElement("img");
-            iconImg.src = "http://openweathermap.org/img/w/" + icon + ".png";
+            iconImg.src = "https://openweathermap.org/img/w/" + icon + ".png";
             iconImg.alt = "天候アイコン"
             iconImg.height = 50;
             iconImg.width = 50;

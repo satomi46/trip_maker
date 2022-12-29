@@ -3,7 +3,7 @@
 ひと言で表すと旅行のナビゲーション（計画から道案内まで）アプリです。
 友人や家族と旅行の計画を共有したり、一人旅でもスケジュールを立てて旅行の管理ができます。また、旅行先の天気予報や地図情報が取得できます。
 <br><br>
-**アプリ URL : <a href="https://tabinavi46.com" target="_blank">tabinavi46.com</a>**
+**アプリ URL : <a href="https://tabinavi46.com" target="_blank" rel="noopener noreferrer">tabinavi46.com</a>**
 
 テストアカウント
 * ID：**tabi@tabi**

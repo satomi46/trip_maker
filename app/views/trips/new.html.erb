@@ -1,4 +1,7 @@
 <%= render "shared/header" %>
+<% breadcrumb :trip_new %>
+
+<%= render "shared/breadcrumbs" %>
 
 <%= form_with model: @trip, class: 'trip-new-main', local: true do |f| %>
 <div class="trip-form-wrap">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_22_024034) do
+ActiveRecord::Schema.define(version: 2022_12_31_062050) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -54,6 +54,15 @@ ActiveRecord::Schema.define(version: 2022_12_22_024034) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["trip_id"], name: "index_details_on_trip_id"
+  end
+
+  create_table "fixed_trips", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "trip_id", null: false
+    t.bigint "detail_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["detail_id"], name: "index_fixed_trips_on_detail_id"
+    t.index ["trip_id"], name: "index_fixed_trips_on_trip_id"
   end
 
   create_table "notices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -107,6 +116,8 @@ ActiveRecord::Schema.define(version: 2022_12_22_024034) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "details", "trips"
+  add_foreign_key "fixed_trips", "details"
+  add_foreign_key "fixed_trips", "trips"
   add_foreign_key "notices", "trips"
   add_foreign_key "notices", "users"
   add_foreign_key "trip_users", "trips"

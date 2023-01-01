@@ -34,11 +34,11 @@
         </div>
       </div>
 
-      <div class="fixing-details">
-      <%= form_with model: [@trip, @fixed_trip], url: trip_fixed_trips_path(@trip.id), class: 'trip-ne', id: 'orm', local: true do |f| %>
+      <div class="fixing-details" id="boxes">
+      <%= form_with model: [@trip, @fixed_trip], url: trip_fixed_trips_path(@trip.id), id: 'check-form', local: true do |f| %>
         <div class="fixing-upper-wrap">
           <label for="all"><input type="checkbox" name="allChecked" id="all">全選択</label>
-          <%= f.submit "スケジュールを確定",class:"btn btn-outline-primary fixing-btn", id:"addre" %>（※チェックをつけたスケジュールで確定します）
+          <%= f.submit "スケジュールを確定",class:"btn btn-outline-primary fixing-btn", id:"fixing-btn" %>（※チェックをつけたスケジュールで確定します）
         </div>
         <% @details.each do |detail| %>
           <div class="fixing-detail">

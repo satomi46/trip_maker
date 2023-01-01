@@ -1,6 +1,6 @@
 class FixedTripsController < ApplicationController
   def new
-    @fixed_trip = Fixed_trips.new
+    @fixed_trip = FixedTrip.new
     @trip = Trip.find(params[:trip_id])
     @details = @trip.details.order('time ASC')
   end

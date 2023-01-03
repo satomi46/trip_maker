@@ -35,6 +35,7 @@
       </div>
 
       <div class="fixing-details" id="boxes">
+        <p class="alert"><%= alert %></p>
         <%= form_with model: [@trip, @fixed_trip], url: trip_fixed_trips_path(@trip.id), id: 'check-form', local: true do |f| %>
           <div class="fixing-upper-wrap">
             <label for="all"><input type="checkbox" name="allChecked" id="all">全選択</label>
@@ -43,7 +44,7 @@
           <% @details.each do |detail| %>
             <label for:#{detail.id} class="fixing-detail">
               <div class="check-boxes">
-                <%= f.check_box :detail_ids,  {class: "check_box", id: detail.id, multiple: true}, detail.id %>
+                <%= f.check_box :detail_ids,  {class: "check_box", id: detail.id, multiple: true}, detail.id, false %>
               </div>
               <div class="fixing-detail">
                 <ion-icon name="star"></ion-icon><%= detail.importance %>

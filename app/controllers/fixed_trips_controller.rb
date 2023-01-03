@@ -6,11 +6,19 @@ class FixedTripsController < ApplicationController
   end
 
   def create
-    fixed_trip_params[:detail_ids].each do |detail_id|
-      fixed_trip = FixedTrip.new(trip_id: params[:trip_id], detail_id: detail_id)
-      fixed_trip.save
+    if params.include?(:fixed_trip)
+      fixed_trip_params[:detail_ids].each do |detail_id|
+        fixed_trip = FixedTrip.new(trip_id: params[:trip_id], detail_id: detail_id)
+        fixed_trip.save
+        redirect_to user_path(current_user.id)
+      end
+    else
+      flash[:alert] = "チェックを1つ以上つけてください"
+      @fixed_trip = FixedTrip.new
+      @trip = Trip.find(params[:trip_id])
+      @details = @trip.details.order('time ASC')
+      render :new
     end
-    redirect_to root_path
   end
 
   def delete

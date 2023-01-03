@@ -43,7 +43,7 @@
           <% @details.each do |detail| %>
             <label for:#{detail.id} class="fixing-detail">
               <div class="check-boxes">
-                <%= f.check_box :detail_ids, class:"check-box", id: detail.id, multiple: true %>
+                <%= f.check_box :detail_ids,  {class: "check_box", id: detail.id, multiple: true}, detail.id %>
               </div>
               <div class="fixing-detail">
                 <ion-icon name="star"></ion-icon><%= detail.importance %>

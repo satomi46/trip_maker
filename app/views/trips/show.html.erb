@@ -15,10 +15,12 @@
             <div class="button">
               <%= link_to "もどる", user_path(current_user.id), class:"btn btn-outline-primary" %>
               <div class="right-button">
-                <%= link_to '確定', new_trip_fixed_trip_path(@trip.id), class:"btn btn-outline-success" %>
                 <%= link_to "編集", edit_trip_path(@trip.id), class:"btn btn-outline-success" %>
                 <%= link_to '削除', trip_path(@trip.id), method: :delete, data: { confirm: '本当に削除してもよろしいですか?' }, class:"btn btn-outline-danger" %>
               </div>
+              <% if FixedTrip.where(trip_id: @trip.id).exists? %>
+                <p class="fixed-announce">スケジュール確定済み</p>
+              <% end %>
             </div>
           </div>
           <div class="trip-content">
@@ -79,6 +81,11 @@
       <%# 詳細スケジュールの一覧表示 %>
       <div class="schedule-lists">
         <p>詳細スケジュール一覧</p>
+        <% if FixedTrip.where(trip_id: @trip.id).exists? %>
+          <%= link_to 'スケジュール確定解除', '#', class:"btn btn-outline-danger schedule-release-btn" %>
+        <% else %>
+          <%= link_to 'スケジュール選択・確定', new_trip_fixed_trip_path(@trip.id), class:"btn btn-outline-success schedule-fix-btn" %>
+        <% end %>
       </div>
       <%= render @details %>
       <%# 詳細スケジュールの一覧表示 %>

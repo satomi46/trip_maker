@@ -7,7 +7,14 @@
     <div class="mypage">
       <div class="my-trips">
         <p class="trip-title-view"><%= @nickname %>さんの旅行リスト</p>
-        <%= render @trips %>
+        <p class="trip-lists">確定した旅行</p>
+        <div class="fixed-trips">
+          <%= render @fixed_trips %>
+        </div>
+        <p class="trip-lists">未確定の旅行</p>
+        <div class="non_fixed-trips">
+          <%= render @non_fixed_trips %>
+        </div>
       </div>
       <div class="my-friends">
         <p class="trip-title-view"><%= @nickname %>さんのフレンドリスト</p>

@@ -1,4 +1,6 @@
 class FixedTripsController < ApplicationController
+  before_action :move_to_index_unless_own_page, only: :new
+
   def new
     @fixed_trip = FixedTrip.new
     @trip = Trip.find(params[:trip_id])
@@ -35,4 +37,7 @@ class FixedTripsController < ApplicationController
     params.require(:fixed_trip).permit(detail_ids: []).merge(trip_id: params[:trip_id])
   end
 
+  def move_to_index_unless_own_page
+    redirect_to root_path unless user_signed_in? && Trip.find(params[:trip_id]).user_ids.include?(current_user.id)
+  end
 end

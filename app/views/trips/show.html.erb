@@ -87,7 +87,18 @@
           <%= link_to 'スケジュール選択・確定', new_trip_fixed_trip_path(@trip.id), class:"btn btn-outline-success schedule-fix-btn" %>
         <% end %>
       </div>
-      <%= render @details %>
+      <% if FixedTrip.where(trip_id: @trip.id).exists? %>
+        <p class="trip-lists">確定スケジュール</p>
+        <div class="fixed-trips">
+          <%= render @fixed_details %>
+        </div>
+        <p class="trip-lists">選択しなかったスケジュール</p>
+        <div class="non-fixed-trips">
+          <%= render @non_fixed_details %>
+        </div>
+      <% else %>
+        <%= render @details %>
+      <% end %>
       <%# 詳細スケジュールの一覧表示 %>
 
 

@@ -9,7 +9,13 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @detail_coodinate = DetailCoodinate.new
+    # 未確定の場合、@detailsで一括り
     @details = @trip.details.order('time ASC')
+    # 確定済みの場合、fixed_detailsとnon_fixed_detailsに分けて表示
+    fixed_detail_ids = FixedTrip.where(trip_id: @trip.id).pluck(:detail_id)
+    @fixed_details = Detail.where(id: fixed_detail_ids).order('time ASC')
+    @non_fixed_details = Detail.where(trip_id: @trip.id).where.not(id: fixed_detail_ids).order('time ASC')
+
     @coords = Coodinate.all
     gon.coords = @coords
     gon.details = @details

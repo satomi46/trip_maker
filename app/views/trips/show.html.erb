@@ -82,7 +82,7 @@
       <div class="schedule-lists">
         <p>詳細スケジュール一覧</p>
         <% if FixedTrip.where(trip_id: @trip.id).exists? %>
-          <%= link_to 'スケジュール確定解除', '#', class:"btn btn-outline-danger schedule-release-btn" %>
+          <%= link_to 'スケジュール確定解除', trip_fixed_trip_path(@trip.id, @trip.detail_ids), method: :delete, data: { confirm: '本当に解除してもよろしいですか?' }, class:"btn btn-outline-danger schedule-release-btn" %>
         <% else %>
           <%= link_to 'スケジュール選択・確定', new_trip_fixed_trip_path(@trip.id), class:"btn btn-outline-success schedule-fix-btn" %>
         <% end %>

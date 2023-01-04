@@ -10,8 +10,8 @@ class FixedTripsController < ApplicationController
       fixed_trip_params[:detail_ids].each do |detail_id|
         fixed_trip = FixedTrip.new(trip_id: params[:trip_id], detail_id: detail_id)
         fixed_trip.save
-        redirect_to user_path(current_user.id)
       end
+      redirect_to user_path(current_user.id)
     else
       flash[:alert] = "チェックを1つ以上つけてください"
       @fixed_trip = FixedTrip.new
@@ -21,7 +21,12 @@ class FixedTripsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    fixed_trip_ids = FixedTrip.where(trip_id: params[:trip_id]).pluck(:id)
+    fixed_trip_ids.each do |id|
+      FixedTrip.find(id).destroy
+    end
+    redirect_to trip_path(params[:trip_id])
   end
 
   private

@@ -23,7 +23,9 @@ crumb :user_show do
 end
 
 crumb :trip_show do |trip|
-  if current_page?(controller: 'trips', action: 'show', id: params[:id]) || current_page?(controller: 'trips', action: 'edit', id: params[:id])
+  if params[:id] != nil &&
+    (current_page?(controller: 'trips', action: 'show', id: params[:id]) ||
+    current_page?(controller: 'trips', action: 'edit', id: params[:id]))
     trip = Trip.find(params[:id])
     link "旅行計画：#{trip.title}", trip_path(trip.id)
     parent :user_show
@@ -43,6 +45,11 @@ end
 crumb :detail_edit do |detail|
   detail = Detail.find(params[:id])
   link "スケジュールの編集：#{detail.title}", edit_trip_detail_path(detail.id)
+  parent :trip_show
+end
+
+crumb :fixed_trip do
+  link "旅行確定"
   parent :trip_show
 end
 

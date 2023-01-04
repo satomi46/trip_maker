@@ -18,6 +18,9 @@
                 <%= link_to "編集", edit_trip_path(@trip.id), class:"btn btn-outline-success" %>
                 <%= link_to '削除', trip_path(@trip.id), method: :delete, data: { confirm: '本当に削除してもよろしいですか?' }, class:"btn btn-outline-danger" %>
               </div>
+              <% if FixedTrip.where(trip_id: @trip.id).exists? %>
+                <p class="fixed-announce">スケジュール確定済み</p>
+              <% end %>
             </div>
           </div>
           <div class="trip-content">
@@ -78,8 +81,24 @@
       <%# 詳細スケジュールの一覧表示 %>
       <div class="schedule-lists">
         <p>詳細スケジュール一覧</p>
+        <% if FixedTrip.where(trip_id: @trip.id).exists? %>
+          <%= link_to 'スケジュール確定解除', trip_fixed_trip_path(@trip.id, @trip.detail_ids), method: :delete, data: { confirm: '本当に解除してもよろしいですか?' }, class:"btn btn-outline-danger schedule-release-btn" %>
+        <% else %>
+          <%= link_to 'スケジュール選択・確定', new_trip_fixed_trip_path(@trip.id), class:"btn btn-outline-success schedule-fix-btn" %>
+        <% end %>
       </div>
-      <%= render @details %>
+      <% if FixedTrip.where(trip_id: @trip.id).exists? %>
+        <p class="trip-lists">確定スケジュール</p>
+        <div class="fixed-trips">
+          <%= render @fixed_details %>
+        </div>
+        <p class="trip-lists">選択しなかったスケジュール</p>
+        <div class="non-fixed-trips">
+          <%= render @non_fixed_details %>
+        </div>
+      <% else %>
+        <%= render @details %>
+      <% end %>
       <%# 詳細スケジュールの一覧表示 %>
 
 

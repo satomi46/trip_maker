@@ -3,4 +3,5 @@ class Detail < ApplicationRecord
   validates :importance, presence: true
 
   belongs_to :trip
+  has_one :fixed_trip, dependent: :destroy
 end

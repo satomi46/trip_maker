@@ -9,10 +9,19 @@
 
 .button {
   display: flex;
+  align-items: center;
 }
 
 .right-button {
   margin-left: 5px;
+}
+
+.fixed-announce {
+  margin: 0 10px;
+  height: 100%;
+  font-size: large;
+  font-weight: bold;
+  color: #FF4E1A;
 }
 
 .trip-content {
@@ -156,16 +165,25 @@
 
 .schedule-lists {
   height: 60px;
-  font-size: 20px;
   margin: 20px 0;
   background-color: white;
   border-radius: 10px;
-  line-height: 60px;
   padding: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.schedule-lists > p {
+  font-size: 20px;
+  margin: 0 10px 0 0;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
 }
 
 .trip-details-first-raw {
   display: flex;
+  align-items: center;
 }
 
 .detail-time {

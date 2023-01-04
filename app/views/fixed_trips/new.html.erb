@@ -1,0 +1,63 @@
+<%= render "shared/header" %>
+<% breadcrumb :fixed_trip %>
+
+<main>
+  <%= render "shared/breadcrumbs" %>
+  <div class="container">
+    <div class="contents">
+
+      <div class="trip-left">
+        <div class="trip-title-group">
+          <div class="trip-title">
+            <%= @trip.title %>
+          </div>
+          <div class="button">
+            <%= link_to "もどる", user_path(current_user.id), class:"btn btn-outline-primary" %>
+            <div class="right-button">
+              <%= link_to "編集", edit_trip_path(@trip.id), class:"btn btn-outline-success" %>
+              <%= link_to '削除', trip_path(@trip.id), method: :delete, data: { confirm: '本当に削除してもよろしいですか?' }, class:"btn btn-outline-danger" %>
+            </div>
+          </div>
+        </div>
+        <div class="trip-content">
+          <div class="trip-dates">
+            <div>To : <%= @trip.start_date %></div>
+            <div>End : <%= @trip.end_date %></div>
+            <div>同伴者 :
+              <% @trip.trip_users.each do |trip| %>
+                <% if trip.user_id != current_user.id %>
+                  <%= User.where.not(id: current_user.id).where(id: trip.user_id).pluck(:nickname)[0] %> さん
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fixing-details" id="boxes">
+        <p class="alert"><%= alert %></p>
+        <%= form_with model: [@trip, @fixed_trip], url: trip_fixed_trips_path(@trip.id), id: 'check-form', local: true do |f| %>
+          <div class="fixing-upper-wrap">
+            <label for="all"><input type="checkbox" name="allChecked" id="all">全選択</label>
+            <%= f.submit "スケジュールを確定",class:"btn btn-outline-primary fixing-btn", id:"fixing-btn" %>（※チェックをつけたスケジュールで確定します）
+          </div>
+          <% @details.each do |detail| %>
+            <label for:#{detail.id} class="fixing-detail">
+              <div class="check-boxes">
+                <%= f.check_box :detail_ids,  {class: "check_box", id: detail.id, multiple: true}, detail.id, false %>
+              </div>
+              <div class="fixing-detail">
+                <ion-icon name="star"></ion-icon><%= detail.importance %>
+                <ion-icon name="alarm"></ion-icon><%= detail.time.strftime('%m-%d %H:%M') %>
+                <%= detail.title %>
+              </div>
+            </label>
+          <% end %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<%= render "shared/footer" %>

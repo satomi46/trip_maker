@@ -27,6 +27,25 @@
   font-size: 24px;
 }
 
+.trip-lists {
+  margin: 20px 0px 0px;
+  font-size: 22px;
+}
+
+.fixed-trips {
+  margin: 0px 100px 5px 10px;
+  padding: 7px;
+  border: solid 2px #008BFF;
+  border-radius: 5px;
+}
+
+.non-fixed-trips {
+  margin: 0px 100px 5px 10px;
+  padding: 7px;
+  border: solid 3px #FF631A;
+  border-radius: 5px;
+}
+
 .trip-title-group {
   height: 7vh;
   display: flex;
@@ -47,7 +66,7 @@
 }
 
 .trip-contents {
-  width: 70%;
+  width: 100%;
   font-size: 18px;
   background-color: white;
   margin-bottom: 20px;

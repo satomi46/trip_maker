@@ -1,0 +1,27 @@
+.fixing-upper-wrap {
+  display: flex;
+  align-items: center;
+  margin: 10px 6px;
+}
+
+.fixing-btn {
+  margin: 0px 10px;
+}
+
+.fixing-details {
+  margin: 10px 0px;
+}
+
+.alert {
+  color: red;
+}
+
+.fixing-detail {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  margin: 10px 0px;
+  padding-left: 6px;
+  height: 40px;
+  font-size: 18px;
+}

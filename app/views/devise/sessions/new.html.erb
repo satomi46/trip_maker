@@ -32,6 +32,9 @@
   <div class='login-btn'>
     <%= f.submit "ログイン" ,class:"btn btn-outline-primary login-go-btn" %>
     <%= link_to 'もどる', "/", class:"btn btn-outline-secondary back-btn" %>
+  <div class='user-registrations-path'>
+    <p>アカウント未作成の場合は<%= link_to 'こちら', new_user_registration_path %>から</p>
+  </div>
   </div>
 </div>
 <% end %>

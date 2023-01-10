@@ -13,14 +13,17 @@
           </div>
         </div>
         <div class="message">
-          <div class="message-text">
-          <% if user_signed_in? %>
+          <div class="trip-new">
+            <% if user_signed_in? %>
               <%= link_to "#{current_user.nickname}さん、", user_path(current_user.id) %>
-          <% end %>
-            新しい旅の計画を立てませんか？
+            <% end %>
+            <p>新しい旅の計画を立てませんか？</p>
+            <%= link_to "立てる！", new_trip_path, class:"btn btn-primary" %>
           </div>
-          <%= link_to "立てる！", new_trip_path, class:"btn btn-primary" %>
-          <%# <p>かわいい猫たちのフォトギャラリーをご覧ください。</p> %>
+          <div class="trip-index">
+            <p>他ユーザーの計画を</p>
+            <%= link_to "見てみる！", "#", class:"btn btn-primary" %>
+          </div>
         </div>
       </div>
     </div>

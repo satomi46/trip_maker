@@ -36,6 +36,7 @@ class TripsController < ApplicationController
       make_notice
       redirect_to root_path
     else
+      @friends = current_user.matchers
       render :new
     end
   end

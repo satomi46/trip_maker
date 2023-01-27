@@ -5,13 +5,15 @@
 友人や家族と旅行の計画を共有したり、一人旅でもスケジュールを立てて旅行の管理ができます。また、旅行先の天気予報や地図情報が取得できます。
 <br>
 
-### アプリ URL : <a href="https://tabinavi46.com" target="_blank" rel="noopener noreferrer">**tabinavi46.com**</a>
-（別タブリンクの設定ができず、お手数をおかけし申し訳ありませんが<br>別タブで開く際は**右クリック**にてお願いします）
+### ~~アプリ URL : <a href="https://tabinavi46.com" target="_blank" rel="noopener noreferrer">**tabinavi46.com**</a>~~
+~~（別タブリンクの設定ができず、お手数をおかけし申し訳ありませんが<br>別タブで開く際は**右クリック**にてお願いします）~~
 
-### テストアカウント
-* ID：**tabi@tabi**
-* Password：**tabi123**
+### ~~テストアカウント~~
+* ~~ID：**tabi@tabi**~~
+* ~~Password：**tabi123**~~
 <br>
+
+
 
 アプリ説明資料（Googleドキュメント） : <a href="https://docs.google.com/document/d/1z85d3zdV6kbzSs2TPphY0B2Ft1DCbSUWojogwXXsyWs/edit?usp=sharing" target="_blank" rel="noopener noreferrer">こちら</a> （工夫した点などを記載しています）
 <br>
